@@ -22,7 +22,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: ['java'] # CodeQL requires 'java' for analyzing Kotlin
+        language: ['java'] # Use 'java' for Kotlin analysis
 
     steps:
       - name: Checkout repository
@@ -39,11 +39,14 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Build project
+      - name: Build Project
         run: ./gradlew clean build
-
+        working-directory: ./app # Update if necessary
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
         with:
           category: 'security-and-quality'
+
+      - name: Debug SARIF Output
+        run: cat codeql-results.sarif || echo "SARIF file not generated"
