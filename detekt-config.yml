@@ -1,0 +1,33 @@
+naming:
+  FunctionNaming:
+    active: true
+    functionPattern: '[A-Za-z][A-Za-z0-9]*'
+    ignoreAnnotated: ['Composable']
+
+  TopLevelPropertyNaming:
+    active: true
+    constantPattern: '[A-Z][A-Za-z0-9]*'
+
+style:
+  NewLineAtEndOfFile:
+    active: false
+
+formatting:
+  MagicNumber:
+    active: true
+    ignorePropertyDeclaration: true
+  UnusedPrivateMember:
+    ignoreAnnotated: ['Preview']
+
+complexity:
+  LongMethod:
+    active: false
+  LongParameterList:
+    active: true
+    functionThreshold: 10
+    constructorThreshold: 7
+    ignoreDefaultParameters: true
+    ignoreDataClasses: true
+    ignoreAnnotatedParameter: [ ]
+  TooManyFunctions:
+    ignoreAnnotatedFunctions: ['Preview']
