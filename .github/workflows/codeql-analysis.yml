@@ -41,7 +41,7 @@ jobs:
 
       - name: Build Project
         run: ./gradlew clean build
-        working-directory: ./app # Update if necessary
+
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
