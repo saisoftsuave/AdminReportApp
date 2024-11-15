@@ -22,7 +22,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: ['kotlin'] # Add or remove languages as needed
+        language: ['java'] # CodeQL requires 'java' for analyzing Kotlin
 
     steps:
       - name: Checkout repository
@@ -32,6 +32,16 @@ jobs:
         uses: github/codeql-action/init@v2
         with:
           languages: ${{ matrix.language }}
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Build project
+        run: ./gradlew clean build
+        working-directory: ./app # Update if the Gradle project is elsewhere
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
